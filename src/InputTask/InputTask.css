@@ -1,0 +1,21 @@
+ol {
+    padding-left: 0;
+}
+
+ol li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    padding: 7px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-bottom: 7px;
+}
+
+.closeBtn {
+    color: #fff;
+    padding: 4px;
+    cursor: pointer;
+    background-color: red;
+    border-radius: 100%;
+}
