@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import mainStyles from "./App.module.css";
 import Task from "./InputTask/InputTask";
 
 class TodoApp extends Component {
@@ -30,25 +30,40 @@ class TodoApp extends Component {
 
   render() {
     const taskList = this.state.tasks.map((t, index) => {
-      return <Task items={t} key={index} remove={this.removeTaskHandler} />;
+      return (
+        <Task
+          items={t}
+          key={index}
+          remove={() => this.removeTaskHandler(index)}
+        />
+      );
     });
 
     return (
-      <div className="App">
-        <h1>
-          <span className="text1">My</span> <span className="text2">Todo</span>
+      <div className={mainStyles.App}>
+        <h1 className={mainStyles.headTxt}>
+          <span className={mainStyles.text1}>My</span>{" "}
+          <span className={mainStyles.text2}>Todo</span>
           List
         </h1>
 
-        <div className="main-content">
-          <form onSubmit={this.updateInputHandler} className="inputs-item">
-            <input id="input" type="text" placeholder="Write your task" />
-            <button type="submit" id="submit" className="submit">
+        <div className={mainStyles.mainContent}>
+          <form
+            onSubmit={this.updateInputHandler}
+            className={mainStyles.inputItem}
+          >
+            <input
+              id="input"
+              className={mainStyles.inputCls}
+              type="text"
+              placeholder="Write your task"
+            />
+            <button type="submit" id="submit" className={mainStyles.submitBtn}>
               Add Task
             </button>
           </form>
           <div>
-            <ol>{taskList}</ol>
+            <ol className={mainStyles.ol}>{taskList}</ol>
           </div>
         </div>
       </div>

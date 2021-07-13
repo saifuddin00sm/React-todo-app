@@ -16,7 +16,11 @@ body {
     border-radius: 6px;
 }
 
-h1 {
+.ol {
+    padding-left: 0;
+}
+
+.headTxt {
     text-align: center;
 }
 
@@ -28,15 +32,15 @@ h1 {
     color: #ff6b81
 }
 
-.main-content {
+.mainContent {
     padding: 1rem;
 }
 
-.main-content .inputs-item {
+.inputsItem {
     margin-bottom: 2rem;
 }
 
-.main-content input {
+.inputCls {
     padding: 8px 10px;
     outline: none;
     border: 2px solid #8a8a8a;
@@ -45,7 +49,7 @@ h1 {
     width: 70%;
 }
 
-.main-content .submit {
+.submitBtn {
     padding: 10px 20px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;

@@ -1,11 +1,11 @@
 import React from "react";
-import "./InputTask.css";
+import inputClassses from "./InputTask.module.css";
 
 const tasks = (props) => {
   return (
-    <li>
+    <li className={inputClassses.listStyle}>
       <span>{props.items}</span>
-      <span onClick={props.remove} className="closeBtn">
+      <span onClick={props.remove} className={inputClassses.closeBtn}>
         &#10005;
       </span>
     </li>
