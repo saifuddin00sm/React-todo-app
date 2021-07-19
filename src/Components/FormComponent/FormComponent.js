@@ -31,6 +31,9 @@ const formComp = (props) => {
             </form>
           )}
         </FormContext.Consumer>
+        <button className={mainStyles.clearTaskBtn} onClick={props.clearTask}>
+          Clear All Task
+        </button>
         <div>
           <ol className={mainStyles.ol}>{props.taskMain}</ol>
         </div>

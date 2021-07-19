@@ -72,6 +72,14 @@ class TodoApp extends Component {
     this.setState({ tasks: task });
   };
 
+  // clear all task in one click
+  clearTaskHandler = () => {
+    localStorage.removeItem("tasks");
+    let task = this.state.tasks;
+    task = [];
+    this.setState({ tasks: task });
+  };
+
   // Removing task from list
   removeTaskHandler = (index) => {
     const tasks = this.state.tasks;
@@ -99,7 +107,7 @@ class TodoApp extends Component {
 
     return (
       <FormContext.Provider value={{ submit: this.updateInputHandler }}>
-        <FormComp taskMain={taskList} />
+        <FormComp taskMain={taskList} clearTask={this.clearTaskHandler} />
       </FormContext.Provider>
     );
   }
