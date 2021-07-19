@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import mainStyles from "./App.module.css";
+// import mainStyles from "./App.module.css";
 import Task from "./Components/InputTask/InputTask";
+import FormComp from "./Components/FormComponent/FormComponent";
+import FormContext from "./context/form-context";
 
 class TodoApp extends Component {
   state = {
@@ -15,13 +17,17 @@ class TodoApp extends Component {
       alert("Please add a task");
     } else {
       const myArr = this.state.tasks;
+
       myArr.push(input.value);
 
       this.setState({ tasks: myArr });
 
       const taskVal = input.value.trim();
 
+      //passing input value to the localStorage function
       this.setItemOnLocalHandler(taskVal);
+
+      // clearing input field
       input.value = "";
     }
   };
@@ -92,33 +98,9 @@ class TodoApp extends Component {
     });
 
     return (
-      <div className={mainStyles.App}>
-        <h1 className={mainStyles.headTxt}>
-          <span className={mainStyles.text1}>My</span>{" "}
-          <span className={mainStyles.text2}>Todo</span>
-          List
-        </h1>
-
-        <div className={mainStyles.mainContent}>
-          <form
-            onSubmit={this.updateInputHandler}
-            className={mainStyles.inputItem}
-          >
-            <input
-              id="input"
-              className={mainStyles.inputCls}
-              type="text"
-              placeholder="Write your task"
-            />
-            <button type="submit" id="submit" className={mainStyles.submitBtn}>
-              Add Task
-            </button>
-          </form>
-          <div>
-            <ol className={mainStyles.ol}>{taskList}</ol>
-          </div>
-        </div>
-      </div>
+      <FormContext.Provider value={{ submit: this.updateInputHandler }}>
+        <FormComp taskMain={taskList} />
+      </FormContext.Provider>
     );
   }
 }
