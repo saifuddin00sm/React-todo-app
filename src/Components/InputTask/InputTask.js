@@ -1,16 +1,20 @@
 import React from "react";
-import inputClassses from "./InputTask.module.css";
+import inputClasses from "./InputTask.module.css";
+import dateFormat from "dateformat";
 
-const tasks = props => {
-  return (
-    <li className={inputClassses.listStyle}>
-      <span>{props.items}</span>
-      {/* <span>Date and times</span> */}
-      <span onClick={props.remove} className={inputClassses.closeBtn}>
-        &#10005;
-      </span>
-    </li>
-  );
-};
+class Tasks extends React.Component {
+  render() {
+    const dates = new Date().toString();
+    return (
+      <li className={inputClasses.listStyle}>
+        <span>{this.props.items}</span>
+        <span>{dateFormat(dates, "ddd, mmm, dS, yyyy, h:MM TT")}</span>
+        <span onClick={this.props.remove} className={inputClasses.closeBtn}>
+          &#10005;
+        </span>
+      </li>
+    );
+  }
+}
 
-export default tasks;
+export default Tasks;
